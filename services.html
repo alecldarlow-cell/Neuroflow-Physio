@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Norwich Neuro Physio &amp; Pilates Norwich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- SERVICES-SPECIFIC ---- */
+.services-main {
+  padding:80px 80px 100px;
+  background:var(--white);
+}
+
+.services-header {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:56px; flex-wrap:wrap; gap:24px;
+}
+
+.services-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+
+.service-card {
+  border-radius:4px; overflow:hidden;
+  transition:transform .3s, box-shadow .3s;
+  display:flex; flex-direction:column;
+}
+.service-card:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(0,0,0,.09); }
+
+.service-card-top {
+  padding:36px 32px 28px; flex:1;
+  background:white; border:1.5px solid var(--border); border-bottom:none;
+  border-radius:4px 4px 0 0;
+}
+
+.service-icon {
+  width:48px; height:48px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; margin-bottom:20px;
+}
+.icon-teal { background:var(--teal-light); }
+.icon-sage { background:var(--sage-light); }
+.icon-warm { background:#faebd7; }
+
+.service-card h3 {
+  font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400;
+  color:var(--ink); margin-bottom:10px; line-height:1.3;
+}
+.service-card p {
+  font-size:14px; line-height:1.75; color:rgba(26,31,46,.6); font-weight:300;
+}
+
+.service-card-bottom {
+  padding:20px 32px 26px;
+  background:white; border:1.5px solid var(--border); border-top:1px solid var(--border);
+  border-radius:0 0 4px 4px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+.service-price {
+  font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--teal);
+}
+.service-price-note { font-size:11px; color:rgba(26,31,46,.4); margin-top:2px; letter-spacing:.05em; }
+
+.service-link {
+  font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--teal); text-decoration:none;
+  display:flex; align-items:center; gap:6px; transition:gap .2s;
+}
+.service-link:hover { gap:10px; }
+
+/* Featured service */
+.service-card.featured .service-card-top {
+  background:var(--teal); border-color:var(--teal);
+}
+.service-card.featured h3 { color:white; }
+.service-card.featured p  { color:rgba(255,255,255,.75); }
+.service-card.featured .service-card-bottom { background:var(--teal); border-color:var(--teal); }
+.service-card.featured .service-price,
+.service-card.featured .service-link { color:white; }
+.service-card.featured .service-price-note { color:rgba(255,255,255,.45); }
+
+/* ---- EVIDENCE SECTION ---- */
+.evidence-section {
+  padding:100px 80px;
+  background:var(--cream);
+}
+
+.evidence-layout {
+  margin-top:56px;
+  display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;
+}
+
+.evidence-points { display:flex; flex-direction:column; gap:20px; }
+
+.evidence-item {
+  display:flex; gap:24px; padding:28px;
+  background:white; border-radius:4px;
+  border-left:3px solid var(--sage);
+  transition:border-color .3s;
+}
+.evidence-item:hover { border-left-color:var(--teal); }
+
+.ev-num {
+  font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300;
+  color:var(--sage); line-height:1; flex-shrink:0; width:44px; text-align:center; opacity:.6;
+}
+.ev-content h4 {
+  font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400;
+  color:var(--ink); margin-bottom:8px;
+}
+.ev-content p {
+  font-size:14px; line-height:1.75; color:rgba(26,31,46,.6); font-weight:300;
+}
+
+.methodology-block { display:flex; flex-direction:column; gap:16px; }
+
+.method-card {
+  background:white; border-radius:4px; padding:32px;
+  border-top:3px solid var(--teal);
+  transition:transform .3s, box-shadow .3s;
+}
+.method-card:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.07); }
+
+.method-card h4 {
+  font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400;
+  color:var(--teal); margin-bottom:10px;
+}
+.method-card p { font-size:14px; line-height:1.75; color:rgba(26,31,46,.6); font-weight:300; }
+
+/* ---- FAQ SECTION ---- */
+.faq-section {
+  padding:100px 80px;
+  background:var(--ink);
+}
+
+.faq-grid {
+  margin-top:52px;
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+}
+
+.faq-item {
+  padding:32px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:4px;
+  transition:border-color .2s, background .2s;
+}
+.faq-item:hover { border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.03); }
+
+.faq-item h4 {
+  font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400;
+  color:white; margin-bottom:12px; line-height:1.35;
+}
+.faq-item p { font-size:14px; line-height:1.75; color:rgba(255,255,255,.5); font-weight:300; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width:1024px) {
+  .services-main, .evidence-section, .faq-section { padding:64px 40px 80px; }
+  .services-grid { grid-template-columns:1fr 1fr; }
+  .evidence-layout { grid-template-columns:1fr; gap:40px; }
+  .faq-grid { grid-template-columns:1fr; }
+}
+@media (max-width:640px) {
+  .services-main, .evidence-section, .faq-section { padding:56px 24px 64px; }
+  .services-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow">What We Offer</p>
+    <h1>Our <em>specialist services</em></h1>
+    <p>From one-to-one assessments to physiotherapist-led group classes — every service is grounded in neurological science and delivered with genuine care.</p>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<div class="services-main">
+  <div class="services-header">
+    <div>
+      <p class="eyebrow">All Services</p>
+      <h2 class="section-title">Built around <em>your needs</em></h2>
+    </div>
+    <p style="font-size:15px; color:rgba(26,31,46,.55); max-width:340px; font-weight:300; line-height:1.7;">All new clients begin with an initial assessment before joining any group class.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card featured fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-teal">🌀</div>
+        <h3>Parkinson's Pilates Classes</h3>
+        <p>Our flagship group class. High-amplitude, PD Warrior-informed movement sessions specifically targeting Parkinson's motor symptoms in a small, supportive group. Tuesday mornings, max 6.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£15/session</div>
+          <div class="service-price-note">or £80 for a block of 6</div>
+        </div>
+        <a href="contact.html" class="service-link">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-teal">🧘</div>
+        <h3>Neuro Pilates Classes</h3>
+        <p>Physiotherapy-informed Pilates for any neurological condition. Improves core stability, posture, trunk control and balance. Chair-based adaptations available. Thursday mornings, max 6.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£14/session</div>
+          <div class="service-price-note">or £75 for a block of 6</div>
+        </div>
+        <a href="contact.html" class="service-link">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-sage">⚖️</div>
+        <h3>Balance & Falls Prevention</h3>
+        <p>Targeted reactive balance training, dual-task exercises and functional strength work. Rebuilds confidence in movement following neurological conditions or age-related balance loss. Wednesday afternoons.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£14/session</div>
+          <div class="service-price-note">or £75 for a block of 6</div>
+        </div>
+        <a href="contact.html" class="service-link">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-sage">🤝</div>
+        <h3>MS Strength & Fatigue</h3>
+        <p>Gently paced functional strengthening for people with multiple sclerosis. Incorporates fatigue management and avoids post-exertional worsening. Monday mornings, max 6.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£14/session</div>
+          <div class="service-price-note">or £75 for a block of 6</div>
+        </div>
+        <a href="contact.html" class="service-link">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-warm">💪</div>
+        <h3>Neuro Rehab Maintenance</h3>
+        <p>For people post-NHS discharge who want to maintain progress with ongoing professional supervision. Open to any neurological condition. Friday mornings, rolling — no fixed block.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£14/session</div>
+          <div class="service-price-note">or £75 for a block of 6</div>
+        </div>
+        <a href="contact.html" class="service-link">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-card-top">
+        <div class="service-icon icon-warm">🔬</div>
+        <h3>Initial Assessment</h3>
+        <p>A one-to-one physiotherapy assessment before joining any group class. Chloe reviews your history, assesses movement and balance, discusses your goals, and recommends the most suitable class. 45–60 minutes.</p>
+      </div>
+      <div class="service-card-bottom">
+        <div>
+          <div class="service-price">£65</div>
+          <div class="service-price-note">Required for all new clients · Followed by free first class</div>
+        </div>
+        <a href="contact.html" class="service-link">Book →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EVIDENCE -->
+<section class="evidence-section">
+  <p class="eyebrow">The Science</p>
+  <h2 class="section-title">Why exercise is <em>medicine</em> for the brain</h2>
+  <p class="lead">These classes aren't adapted general fitness. They're built on the same neuroscience underpinning leading specialist rehabilitation programmes.</p>
+
+  <div class="evidence-layout">
+    <div class="evidence-points fade-up">
+      <div class="evidence-item">
+        <span class="ev-num">01</span>
+        <div class="ev-content">
+          <h4>Parkinson's & High-Intensity Exercise</h4>
+          <p>Strong clinical evidence shows that vigorous, high-amplitude exercise can slow the progression of Parkinson's symptoms. Research from PD Warrior and LSVT BIG demonstrates measurable improvements in movement amplitude, gait and balance with regular participation.</p>
+        </div>
+      </div>
+      <div class="evidence-item">
+        <span class="ev-num">02</span>
+        <div class="ev-content">
+          <h4>Neuroplasticity at Every Age</h4>
+          <p>The nervous system retains the ability to rewire — neuroplasticity — at any age and at any stage post-neurological injury. Targeted, repetitive movement therapy actively stimulates new neural pathways, supporting functional recovery well beyond initial rehabilitation.</p>
+        </div>
+      </div>
+      <div class="evidence-item">
+        <span class="ev-num">03</span>
+        <div class="ev-content">
+          <h4>Pilates & Multiple Sclerosis</h4>
+          <p>Pilates-based trunk control and core stability work has been shown in multiple studies to significantly improve balance scores, reduce fatigue impact and improve quality of life in people with MS. It is among the most recommended supplemental therapies for the condition.</p>
+        </div>
+      </div>
+      <div class="evidence-item">
+        <span class="ev-num">04</span>
+        <div class="ev-content">
+          <h4>Falls Prevention — What Works</h4>
+          <p>NICE clinical guidelines recommend physiotherapist-led balance and strength training as first-line falls prevention. Group-based programmes consistently show the strongest adherence rates and long-term outcomes in preventing repeat falls.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="methodology-block fade-up">
+      <p class="eyebrow">Methodologies</p>
+      <h3 class="section-title" style="font-size:28px; margin-bottom:28px;">Evidence-based <em>frameworks</em> in use</h3>
+
+      <div class="method-card">
+        <h4>PD Warrior®</h4>
+        <p>An internationally recognised high-intensity exercise programme for Parkinson's disease, based on principles of neuroplasticity and high-amplitude movement. Clinical evidence demonstrates improvements in movement amplitude, gait speed and quality of life.</p>
+      </div>
+      <div class="method-card">
+        <h4>LSVT BIG Principles</h4>
+        <p>Lee Silverman Voice Treatment BIG trains people with Parkinson's to make bigger movements. Evidence shows participants achieve significant improvements in gait, balance and functional arm movement after treatment.</p>
+      </div>
+      <div class="method-card">
+        <h4>APPI Pilates Method</h4>
+        <p>The Australian Physiotherapy and Pilates Institute method modifies classical Pilates exercises using the latest research on lumbar instability, muscle imbalance and neural tension — making Pilates safe and effective for people with neurological conditions.</p>
+      </div>
+      <div class="method-card">
+        <h4>PWR! Moves</h4>
+        <p>Parkinson Wellness Recovery — a neuro-rehabilitation approach developed from LSVT BIG research. Task-specific exercises targeting Parkinson's-specific movement deficits, incorporated into the Parkinson's Pilates class.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="eyebrow" style="color:var(--warm);">Common Questions</p>
+  <h2 class="section-title light">Frequently <em>asked</em></h2>
+
+  <div class="faq-grid">
+    <div class="faq-item fade-up">
+      <h4>Do I need a GP referral to attend?</h4>
+      <p>No referral is needed. You can contact us directly. Some clients do come via their GP, neurologist or NHS physiotherapist — and we're happy to liaise with your clinical team if helpful.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>What if I have a bad day or a relapse?</h4>
+      <p>Neurological conditions vary. If you're having a bad day, Chloe will adapt the session accordingly — or it may be best to rest. Blocks never expire, so you won't lose any sessions.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>Can my carer or family member come with me?</h4>
+      <p>Yes. Carers and family members are welcome to attend as observers, particularly for the Parkinson's Pilates class. Just let us know when you enquire and we'll accommodate this.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>I use a wheelchair / walking aid. Can I still attend?</h4>
+      <p>Absolutely. All classes can be adapted for people who use mobility aids or require chair-based exercise. The assessment will allow Chloe to plan the right modifications for you.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>Can private health insurance cover sessions?</h4>
+      <p>Some policies do cover physiotherapy-led exercise classes. We recommend checking with your insurer. We can provide receipts and session notes to support any insurance claim.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>What if I've never done Pilates before?</h4>
+      <p>No prior Pilates experience is needed or expected. All classes are built from the ground up for people with neurological conditions — not adapted from general fitness Pilates. Chloe will explain everything.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>Is there parking and accessibility?</h4>
+      <p>Classes are held at accessible venues in Norwich with step-free access and parking nearby. Full details including the exact venue address are provided when you book.</p>
+    </div>
+    <div class="faq-item fade-up">
+      <h4>How quickly will I see results?</h4>
+      <p>Many participants notice improvements in confidence and specific movements within 4–6 sessions. Sustained neurological benefit builds over months of regular attendance — consistency is key.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="components.js"></script>
+</body>
+</html>

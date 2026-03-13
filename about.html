@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Chloe | Norwich Neuro Physio &amp; Pilates Norwich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- ABOUT-SPECIFIC ---- */
+.about-main {
+  padding:80px 80px 100px;
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:80px;
+  align-items:start;
+  background:var(--white);
+}
+
+/* Image column */
+.about-image-col { position:sticky; top:120px; }
+
+.about-photo {
+  width:100%; aspect-ratio:3/4;
+  background:linear-gradient(145deg, var(--teal-light) 0%, var(--sage-light) 60%, #dce8dc 100%);
+  border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; position:relative;
+}
+.about-photo svg { width:55%; opacity:.28; color:var(--teal); }
+
+.credential-block {
+  margin-top:24px;
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.cred-pill {
+  background:var(--cream); border:1.5px solid var(--border);
+  border-radius:3px; padding:14px 16px;
+  text-align:center;
+}
+.cred-pill .label {
+  font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(26,31,46,.5); display:block; margin-bottom:5px;
+}
+.cred-pill .value {
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px; font-weight:400; color:var(--teal);
+}
+
+/* Text column */
+.about-text-col h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3vw,44px); font-weight:300;
+  color:var(--ink); line-height:1.2; margin-bottom:8px;
+}
+.about-text-col h2 em { font-style:italic; color:var(--teal); }
+
+.about-subtitle {
+  font-size:14px; letter-spacing:.06em; color:rgba(26,31,46,.5);
+  text-transform:uppercase; margin-bottom:32px;
+  padding-bottom:32px; border-bottom:1px solid var(--border);
+}
+
+.about-text-col p {
+  font-size:16px; line-height:1.8; color:rgba(26,31,46,.7);
+  font-weight:300; margin-bottom:18px;
+}
+
+.tag-row { display:flex; flex-wrap:wrap; gap:8px; margin:28px 0; }
+.tag {
+  background:var(--teal-light); color:var(--teal);
+  font-size:12px; padding:7px 14px; border-radius:2px;
+  letter-spacing:.05em; font-weight:500;
+}
+
+/* Specialism list */
+.specialism-section {
+  margin-top:40px; padding-top:36px; border-top:1px solid var(--border);
+}
+.specialism-section h3 {
+  font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400;
+  color:var(--ink); margin-bottom:20px;
+}
+.specialism-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.specialism-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:16px 18px;
+  background:var(--cream); border-radius:3px;
+  font-size:14px; line-height:1.5; color:var(--ink);
+}
+.specialism-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:var(--sage); flex-shrink:0; margin-top:4px;
+}
+
+/* Approach section */
+.approach-section {
+  padding:100px 80px; background:var(--cream);
+}
+.approach-cards {
+  margin-top:52px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+.approach-card {
+  background:white; border-radius:4px; padding:36px 30px;
+  transition:transform .3s, box-shadow .3s;
+}
+.approach-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08); }
+.approach-num {
+  font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300;
+  color:var(--teal); line-height:1; margin-bottom:16px; opacity:.4;
+}
+.approach-card h3 {
+  font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400;
+  color:var(--ink); margin-bottom:12px;
+}
+.approach-card p {
+  font-size:14px; line-height:1.75; color:rgba(26,31,46,.6); font-weight:300;
+}
+
+/* Training section */
+.training-section {
+  padding:80px 80px 100px; background:var(--ink);
+}
+.training-grid {
+  margin-top:52px;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+}
+.training-item {
+  padding:28px 32px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:4px;
+  display:flex; gap:20px; align-items:flex-start;
+  transition:border-color .3s, background .3s;
+}
+.training-item:hover {
+  border-color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.03);
+}
+.training-icon {
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,.07);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.training-item h4 {
+  font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400;
+  color:white; margin-bottom:6px;
+}
+.training-item p { font-size:13px; line-height:1.65; color:rgba(255,255,255,.5); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width:1024px) {
+  .about-main { grid-template-columns:1fr; gap:48px; padding:64px 40px 80px; }
+  .about-image-col { position:static; }
+  .approach-section, .training-section { padding:72px 40px; }
+  .approach-cards { grid-template-columns:1fr 1fr; }
+  .training-grid { grid-template-columns:1fr; }
+}
+@media (max-width:640px) {
+  .about-main { padding:48px 24px 64px; }
+  .approach-section, .training-section { padding:60px 24px; }
+  .approach-cards { grid-template-columns:1fr; }
+  .specialism-grid { grid-template-columns:1fr; }
+  .credential-block { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow">Your Physiotherapist</p>
+    <h1>Meet <em>Chloe Darlow</em></h1>
+    <p>A neurological physiotherapist with over a decade of specialist clinical experience — and a genuine passion for helping people move better and live more independently.</p>
+  </div>
+</div>
+
+<!-- MAIN BIO -->
+<div class="about-main">
+  <div class="about-image-col fade-up">
+    <div class="about-photo">
+      <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="28" r="18" fill="currentColor"/>
+        <path d="M20 140 Q20 80 50 75 Q80 80 80 140" fill="currentColor"/>
+        <path d="M30 95 Q20 110 15 125" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M70 95 Q80 110 85 125" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="credential-block">
+      <div class="cred-pill">
+        <span class="label">Registration</span>
+        <span class="value">HCPC</span>
+      </div>
+      <div class="cred-pill">
+        <span class="label">Membership</span>
+        <span class="value">MCSP</span>
+      </div>
+      <div class="cred-pill">
+        <span class="label">Experience</span>
+        <span class="value">10+ yrs</span>
+      </div>
+      <div class="cred-pill">
+        <span class="label">Location</span>
+        <span class="value">Norwich</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-text-col fade-up">
+    <p class="eyebrow">Biography</p>
+    <h2>Chloe <em>Darlow</em></h2>
+    <p class="about-subtitle">BSc Physiotherapy &nbsp;·&nbsp; MSc Neurological Rehabilitation &nbsp;·&nbsp; MCSP &nbsp;·&nbsp; HCPC Registered</p>
+
+    <p>Chloe is a neurological physiotherapist with over ten years of clinical experience working with people across the full spectrum of neurological conditions. She trained initially in general physiotherapy before completing a Master's degree specialising in neurological rehabilitation — a field that she has dedicated her entire career to.</p>
+
+    <p>What sets Chloe apart is the combination of deep specialist knowledge and genuine warmth. She doesn't just understand the mechanics of neurological conditions — she understands how they affect people's confidence, independence, and daily life. Every class she runs reflects this.</p>
+
+    <p>Alongside her clinical work, Chloe trained as a Pilates instructor through the Australian Physiotherapy and Pilates Institute (APPI), the leading framework for physiotherapy-informed Pilates. She has also completed PD Warrior training — the internationally recognised high-intensity exercise programme for Parkinson's disease — bringing this evidence-based methodology to Norwich.</p>
+
+    <div class="tag-row">
+      <span class="tag">Neurological Physiotherapy</span>
+      <span class="tag">APPI Pilates Method</span>
+      <span class="tag">PD Warrior Trained</span>
+      <span class="tag">LSVT BIG Principles</span>
+      <span class="tag">Balance & Falls</span>
+      <span class="tag">MS Rehabilitation</span>
+    </div>
+
+    <p>Chloe set up Norwich Neuro Physio &amp; Pilates because she kept seeing the same gap: people finishing NHS physiotherapy with real progress, but no specialist community-based exercise to keep that progress going. The NHS does remarkable work, but ongoing weekly specialist support simply isn't available through that route. These classes exist to fill that gap.</p>
+
+    <div class="specialism-section">
+      <h3>Specialist Areas</h3>
+      <div class="specialism-grid">
+        <div class="specialism-item"><span class="specialism-dot"></span>Parkinson's disease rehabilitation</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Multiple sclerosis</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Stroke & brain injury recovery</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Balance disorders & falls prevention</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Acquired brain injury</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Long-term neurological conditions</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Neuroplasticity-based exercise</div>
+        <div class="specialism-item"><span class="specialism-dot"></span>Post-discharge rehab maintenance</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<section class="approach-section">
+  <p class="eyebrow">Philosophy</p>
+  <h2 class="section-title">How Chloe <em>approaches</em> every session</h2>
+
+  <div class="approach-cards">
+    <div class="approach-card fade-up">
+      <div class="approach-num">01</div>
+      <h3>Assess First</h3>
+      <p>Every new client has a one-to-one assessment before joining a group class. Chloe takes the time to understand your history, your goals and your current movement. Nothing is assumed.</p>
+    </div>
+    <div class="approach-card fade-up">
+      <div class="approach-num">02</div>
+      <h3>Evidence-Led</h3>
+      <p>Every exercise in every class has a reason rooted in clinical research. Chloe draws on the same neurological rehabilitation principles that guide NHS specialist practice — not general fitness trends.</p>
+    </div>
+    <div class="approach-card fade-up">
+      <div class="approach-num">03</div>
+      <h3>Individually Adapted</h3>
+      <p>Even within a small group, Chloe adapts exercises to each participant. Good days and bad days are expected and accommodated. The goal is always your progress, at your pace.</p>
+    </div>
+    <div class="approach-card fade-up">
+      <div class="approach-num">04</div>
+      <h3>Community Focused</h3>
+      <p>Groups are small by design. The connection between participants — people who genuinely understand each other's experience — is itself therapeutic. Chloe nurtures this as much as the exercise.</p>
+    </div>
+    <div class="approach-card fade-up">
+      <div class="approach-num">05</div>
+      <h3>Long-Term Thinking</h3>
+      <p>The aim isn't a short course of classes. It's building habits, strength and confidence that last. Chloe supports participants to take ownership of their exercise between sessions too.</p>
+    </div>
+    <div class="approach-card fade-up">
+      <div class="approach-num">06</div>
+      <h3>Safe at Every Level</h3>
+      <p>Neurological conditions vary enormously day-to-day. Chloe's clinical training means she spots early signs of fatigue, overexertion or change — and responds appropriately every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING & QUALIFICATIONS -->
+<section class="training-section">
+  <p class="eyebrow" style="color:var(--warm);">Qualifications & Training</p>
+  <h2 class="section-title light">The training <em>behind</em> the practice</h2>
+
+  <div class="training-grid">
+    <div class="training-item fade-up">
+      <div class="training-icon">🎓</div>
+      <div>
+        <h4>BSc Physiotherapy</h4>
+        <p>Undergraduate degree in physiotherapy from a leading UK university. Foundation in anatomy, physiology and clinical practice across all physiotherapy specialisms.</p>
+      </div>
+    </div>
+    <div class="training-item fade-up">
+      <div class="training-icon">🧠</div>
+      <div>
+        <h4>MSc Neurological Rehabilitation</h4>
+        <p>Postgraduate Master's degree specialising in neurological rehabilitation — the clinical science underpinning all of Chloe's class design and assessment practice.</p>
+      </div>
+    </div>
+    <div class="training-item fade-up">
+      <div class="training-icon">🌀</div>
+      <div>
+        <h4>PD Warrior Certified</h4>
+        <p>Internationally recognised high-intensity exercise programme for Parkinson's disease. The gold standard in Parkinson's-specific movement therapy, with strong evidence of effectiveness.</p>
+      </div>
+    </div>
+    <div class="training-item fade-up">
+      <div class="training-icon">🧘</div>
+      <div>
+        <h4>APPI Pilates Instructor</h4>
+        <p>Australian Physiotherapy and Pilates Institute method — the leading physiotherapy-informed Pilates framework, taught across 10 countries to over 20,000 allied health professionals.</p>
+      </div>
+    </div>
+    <div class="training-item fade-up">
+      <div class="training-icon">⚖️</div>
+      <div>
+        <h4>HCPC Registered & MCSP Member</h4>
+        <p>Fully regulated by the Health and Care Professions Council (HCPC) and a chartered member of the Chartered Society of Physiotherapy (CSP) — the professional and regulatory standards for UK physiotherapists.</p>
+      </div>
+    </div>
+    <div class="training-item fade-up">
+      <div class="training-icon">📚</div>
+      <div>
+        <h4>Ongoing CPD</h4>
+        <p>Continuous professional development in neurological rehabilitation, balance science and exercise medicine. Chloe stays current with the latest research to bring it into every session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="components.js"></script>
+</body>
+</html>

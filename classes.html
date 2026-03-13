@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes | Norwich Neuro Physio &amp; Pilates Norwich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- CLASSES-SPECIFIC ---- */
+.classes-intro {
+  padding:80px 80px 60px;
+  background:var(--white);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:center;
+}
+.classes-intro-text p { font-size:15px; line-height:1.8; color:rgba(26,31,46,.65); font-weight:300; margin-top:20px; }
+
+.how-it-works {
+  display:flex; flex-direction:column; gap:16px;
+}
+.step {
+  display:flex; gap:20px; align-items:flex-start;
+  padding:20px 24px; background:var(--cream); border-radius:3px;
+}
+.step-num {
+  font-family:'Cormorant Garamond',serif; font-size:28px;
+  font-weight:300; color:var(--teal); line-height:1; flex-shrink:0;
+  width:28px; text-align:center;
+}
+.step h4 { font-size:15px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.step p  { font-size:13px; line-height:1.6; color:rgba(26,31,46,.55); }
+
+/* ---- CLASS CARDS ---- */
+.classes-list {
+  padding:60px 80px 100px;
+  background:var(--cream);
+  display:flex; flex-direction:column; gap:32px;
+}
+
+.class-card {
+  background:white; border-radius:4px; overflow:hidden;
+  display:grid; grid-template-columns:3fr 1fr;
+  transition:transform .3s, box-shadow .3s;
+}
+.class-card:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(0,0,0,.09); }
+
+.class-card-body { padding:44px 48px; }
+
+.class-badge {
+  display:inline-block; font-size:10px; letter-spacing:.15em;
+  text-transform:uppercase; padding:5px 12px; border-radius:2px;
+  margin-bottom:20px; font-weight:500;
+}
+.badge-teal { background:var(--teal-light); color:var(--teal); }
+.badge-warm { background:#faebd7; color:#9a6b2a; }
+.badge-sage { background:var(--sage-light); color:var(--sage); }
+.badge-new  { background:var(--sage); color:white; }
+
+.class-card h2 {
+  font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300;
+  color:var(--ink); line-height:1.2; margin-bottom:14px;
+}
+.class-card h2 em { font-style:italic; color:var(--teal); }
+
+.class-card .desc {
+  font-size:15px; line-height:1.8; color:rgba(26,31,46,.65);
+  font-weight:300; max-width:600px; margin-bottom:28px;
+}
+
+.class-meta-row {
+  display:flex; gap:24px; flex-wrap:wrap; margin-bottom:28px;
+}
+.meta-chip {
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; color:rgba(26,31,46,.6);
+}
+.meta-chip::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--warm); flex-shrink:0;
+}
+
+.suitable-for {
+  border-top:1px solid var(--border); padding-top:24px;
+}
+.suitable-for span {
+  font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(26,31,46,.4); display:block; margin-bottom:10px;
+}
+.suitable-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.suitable-tag {
+  font-size:12px; color:var(--ink); background:var(--cream);
+  padding:5px 12px; border-radius:2px; border:1px solid var(--border);
+}
+
+/* Pricing panel */
+.class-card-price {
+  background:var(--ink); padding:44px 32px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.price-main {
+  font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300;
+  color:white; line-height:1;
+}
+.price-unit { font-size:14px; color:rgba(255,255,255,.4); margin-top:4px; font-weight:300; }
+
+.price-block-deal {
+  margin-top:24px; padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.price-block-deal .deal-label {
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--warm); margin-bottom:6px;
+}
+.price-block-deal .deal-value {
+  font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:white;
+}
+.price-block-deal .deal-note { font-size:12px; color:rgba(255,255,255,.35); margin-top:3px; }
+
+.class-book-btn {
+  margin-top:auto; padding-top:28px;
+}
+.class-book-btn a {
+  display:block; text-align:center;
+  background:var(--teal); color:white;
+  padding:14px 20px; border-radius:2px;
+  font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+  text-decoration:none; transition:background .2s;
+}
+.class-book-btn a:hover { background:var(--teal-mid); }
+
+/* Featured card (Parkinson's) */
+.class-card.featured .class-card-body { background:var(--teal); }
+.class-card.featured h2,
+.class-card.featured .desc { color:rgba(255,255,255,.92); }
+.class-card.featured h2 em { color:var(--warm); }
+.class-card.featured .class-meta-row .meta-chip { color:rgba(255,255,255,.65); }
+.class-card.featured .suitable-for { border-top-color:rgba(255,255,255,.15); }
+.class-card.featured .suitable-for span { color:rgba(255,255,255,.4); }
+.class-card.featured .suitable-tag { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.15); color:white; }
+.class-card.featured .class-card-price { background:#1a3a3a; }
+
+/* ---- TIMETABLE ---- */
+.timetable-section {
+  padding:80px 80px 100px;
+  background:var(--white);
+}
+.timetable {
+  margin-top:48px;
+  border:1.5px solid var(--border); border-radius:4px; overflow:hidden;
+}
+.timetable-row {
+  display:grid; grid-template-columns:140px 200px 1fr 140px;
+  align-items:center;
+  padding:22px 32px;
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.timetable-row:last-child { border-bottom:none; }
+.timetable-row:hover { background:var(--cream); }
+.timetable-row.header {
+  background:var(--ink); color:white;
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+}
+.timetable-row.header:hover { background:var(--ink); }
+.timetable-day { font-weight:500; color:var(--teal); font-size:15px; }
+.timetable-time { font-size:14px; color:rgba(26,31,46,.6); }
+.timetable-class { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400; }
+.timetable-spots {
+  text-align:right; font-size:13px;
+  color:var(--sage);
+}
+.timetable-spots.few { color:var(--warm); }
+
+/* ---- ASSESSMENT CTA ---- */
+.assessment-cta {
+  margin:0 80px 100px;
+  padding:56px 64px;
+  background:var(--warm-light);
+  border-radius:4px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:32px;
+  border-left:4px solid var(--warm);
+}
+.assessment-cta h3 {
+  font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink);
+  margin-bottom:10px;
+}
+.assessment-cta p { font-size:15px; color:rgba(26,31,46,.65); font-weight:300; max-width:500px; line-height:1.7; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width:1024px) {
+  .classes-intro { grid-template-columns:1fr; padding:64px 40px 48px; }
+  .classes-list { padding:48px 40px 80px; }
+  .class-card { grid-template-columns:1fr; }
+  .class-card-price { padding:32px 40px; flex-direction:row; align-items:center; flex-wrap:wrap; gap:24px; }
+  .class-book-btn { margin-top:0; padding-top:0; }
+  .timetable-section { padding:64px 40px; }
+  .assessment-cta { margin:0 40px 80px; padding:40px; }
+}
+@media (max-width:640px) {
+  .classes-intro { padding:48px 24px 36px; }
+  .classes-list { padding:36px 24px 64px; }
+  .class-card-body { padding:32px 28px; }
+  .timetable-section { padding:56px 24px; }
+  .timetable-row { grid-template-columns:1fr 1fr; gap:8px; }
+  .timetable-spots { text-align:left; }
+  .assessment-cta { margin:0 24px 64px; padding:32px 28px; flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow">Face-to-Face · Norwich, Norfolk</p>
+    <h1>Our specialist <em>classes</em></h1>
+    <p>Every class is physiotherapist-led, capped at 6 participants, and built around the neuroscience of specific conditions — not generic exercise adapted to fit.</p>
+  </div>
+</div>
+
+<!-- INTRO + HOW IT WORKS -->
+<div class="classes-intro">
+  <div class="classes-intro-text fade-up">
+    <p class="eyebrow">How It Works</p>
+    <h2 class="section-title">From your first <em>enquiry</em> to your first class</h2>
+    <p>We take a careful, personalised approach to getting you into the right class. Every new participant begins with an individual assessment so Chloe can make sure the class is right for you — and that you feel confident and safe from day one.</p>
+  </div>
+
+  <div class="how-it-works fade-up">
+    <div class="step">
+      <span class="step-num">1</span>
+      <div>
+        <h4>Enquire</h4>
+        <p>Drop us a message with a little background about your condition and what you're hoping to achieve. We'll get back to you within 48 hours.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <div>
+        <h4>Initial Assessment (£65)</h4>
+        <p>A one-to-one session with Chloe to assess your movement, discuss your goals, and identify the right class for you. 45–60 minutes.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <div>
+        <h4>First Class — Free</h4>
+        <p>Your first group session after assessment is complimentary. A chance to meet the group and experience the class before committing.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <div>
+        <h4>Book a Block</h4>
+        <p>Book individual sessions or save with a block of 6. Blocks never expire and can be paused if your health requires it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLASS CARDS -->
+<div class="classes-list">
+
+  <div class="class-card featured fade-up">
+    <div class="class-card-body">
+      <span class="class-badge badge-warm">Flagship Class</span>
+      <h2>Parkinson's <em>Pilates</em></h2>
+      <p class="desc">Our most specialised class — designed specifically for people with Parkinson's disease. Drawing on PD Warrior principles, LSVT BIG methodology and Pilates-based movement training, this high-amplitude class targets the specific motor challenges of Parkinson's: movement amplitude, rhythm, posture, balance and freezing. Motivating, challenging, and genuinely enjoyable.</p>
+      <div class="class-meta-row">
+        <span class="meta-chip">Tuesday · 10:30am</span>
+        <span class="meta-chip">60 minutes</span>
+        <span class="meta-chip">Max 6 participants</span>
+        <span class="meta-chip">Carers welcome to observe</span>
+      </div>
+      <div class="suitable-for">
+        <span>Suitable for</span>
+        <div class="suitable-tags">
+          <span class="suitable-tag">Mild Parkinson's</span>
+          <span class="suitable-tag">Moderate Parkinson's</span>
+          <span class="suitable-tag">Newly diagnosed</span>
+          <span class="suitable-tag">Post-medication adjustment</span>
+        </div>
+      </div>
+    </div>
+    <div class="class-card-price">
+      <div>
+        <div class="price-main">£15</div>
+        <div class="price-unit">per session</div>
+        <div class="price-block-deal">
+          <div class="deal-label">Block of 6</div>
+          <div class="deal-value">£80</div>
+          <div class="deal-note">Save £10 · Never expires</div>
+        </div>
+      </div>
+      <div class="class-book-btn">
+        <a href="contact.html">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-card fade-up">
+    <div class="class-card-body">
+      <span class="class-badge badge-teal">Popular</span>
+      <h2>Neuro <em>Pilates</em></h2>
+      <p class="desc">Physiotherapy-informed Pilates adapted for neurological conditions. Improves core stability, posture, trunk control and balance through carefully progressed Pilates-based movement. Suitable for a wide range of neurological conditions and all mobility levels — chair-based options available throughout.</p>
+      <div class="class-meta-row">
+        <span class="meta-chip">Thursday · 10:00am</span>
+        <span class="meta-chip">55 minutes</span>
+        <span class="meta-chip">Max 6 participants</span>
+        <span class="meta-chip">Chair-based options available</span>
+      </div>
+      <div class="suitable-for">
+        <span>Suitable for</span>
+        <div class="suitable-tags">
+          <span class="suitable-tag">Multiple Sclerosis</span>
+          <span class="suitable-tag">Post-stroke</span>
+          <span class="suitable-tag">Brain Injury</span>
+          <span class="suitable-tag">Parkinson's</span>
+          <span class="suitable-tag">Balance disorders</span>
+          <span class="suitable-tag">Long-term neuro conditions</span>
+        </div>
+      </div>
+    </div>
+    <div class="class-card-price">
+      <div>
+        <div class="price-main">£14</div>
+        <div class="price-unit">per session</div>
+        <div class="price-block-deal">
+          <div class="deal-label">Block of 6</div>
+          <div class="deal-value">£75</div>
+          <div class="deal-note">Save £9 · Never expires</div>
+        </div>
+      </div>
+      <div class="class-book-btn">
+        <a href="contact.html">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-card fade-up">
+    <div class="class-card-body">
+      <span class="class-badge badge-new">New Class</span>
+      <h2>Balance & <em>Falls Prevention</em></h2>
+      <p class="desc">A targeted programme for people with a history of falls or balance concerns following neurological conditions or ageing. Combines reactive balance training, dual-task exercises and functional strength work to rebuild confidence in movement. Evidence-based and NICE-recommended as first-line falls prevention treatment.</p>
+      <div class="class-meta-row">
+        <span class="meta-chip">Wednesday · 2:00pm</span>
+        <span class="meta-chip">50 minutes</span>
+        <span class="meta-chip">Max 6 participants</span>
+        <span class="meta-chip">All mobility levels welcome</span>
+      </div>
+      <div class="suitable-for">
+        <span>Suitable for</span>
+        <div class="suitable-tags">
+          <span class="suitable-tag">Fall history</span>
+          <span class="suitable-tag">Post-fall anxiety</span>
+          <span class="suitable-tag">Any neurological balance issue</span>
+          <span class="suitable-tag">Age-related balance loss</span>
+          <span class="suitable-tag">Vestibular disorders</span>
+        </div>
+      </div>
+    </div>
+    <div class="class-card-price">
+      <div>
+        <div class="price-main">£14</div>
+        <div class="price-unit">per session</div>
+        <div class="price-block-deal">
+          <div class="deal-label">Block of 6</div>
+          <div class="deal-value">£75</div>
+          <div class="deal-note">Save £9 · Never expires</div>
+        </div>
+      </div>
+      <div class="class-book-btn">
+        <a href="contact.html">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-card fade-up">
+    <div class="class-card-body">
+      <span class="class-badge badge-sage">MS Focus</span>
+      <h2>MS Strength <em>& Fatigue</em></h2>
+      <p class="desc">Specifically designed for multiple sclerosis. Blends gentle functional strengthening with fatigue management education. Carefully paced to avoid post-exertional worsening while building real-world strength and balance. Chloe monitors exertion throughout and adapts to how participants are presenting on any given day.</p>
+      <div class="class-meta-row">
+        <span class="meta-chip">Monday · 11:00am</span>
+        <span class="meta-chip">50 minutes</span>
+        <span class="meta-chip">Max 6 participants</span>
+        <span class="meta-chip">Fatigue-aware pacing</span>
+      </div>
+      <div class="suitable-for">
+        <span>Suitable for</span>
+        <div class="suitable-tags">
+          <span class="suitable-tag">Relapsing-remitting MS</span>
+          <span class="suitable-tag">Secondary progressive MS</span>
+          <span class="suitable-tag">MS fatigue</span>
+          <span class="suitable-tag">Mild to moderate MS symptoms</span>
+        </div>
+      </div>
+    </div>
+    <div class="class-card-price">
+      <div>
+        <div class="price-main">£14</div>
+        <div class="price-unit">per session</div>
+        <div class="price-block-deal">
+          <div class="deal-label">Block of 6</div>
+          <div class="deal-value">£75</div>
+          <div class="deal-note">Save £9 · Never expires</div>
+        </div>
+      </div>
+      <div class="class-book-btn">
+        <a href="contact.html">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-card fade-up">
+    <div class="class-card-body">
+      <span class="class-badge badge-teal">All Conditions</span>
+      <h2>Neuro Rehab <em>Maintenance</em></h2>
+      <p class="desc">For people who have completed a course of NHS or private physiotherapy and want to maintain — and continue building on — their progress. Open to any neurological condition, at any stage. A professionally supervised, supportive group environment to keep moving forward long after formal rehabilitation has ended.</p>
+      <div class="class-meta-row">
+        <span class="meta-chip">Friday · 9:30am</span>
+        <span class="meta-chip">55 minutes</span>
+        <span class="meta-chip">Max 6 participants</span>
+        <span class="meta-chip">Rolling — no fixed block</span>
+      </div>
+      <div class="suitable-for">
+        <span>Suitable for</span>
+        <div class="suitable-tags">
+          <span class="suitable-tag">Post-NHS discharge</span>
+          <span class="suitable-tag">Any neurological condition</span>
+          <span class="suitable-tag">Ongoing maintenance</span>
+          <span class="suitable-tag">Long-term neuro conditions</span>
+        </div>
+      </div>
+    </div>
+    <div class="class-card-price">
+      <div>
+        <div class="price-main">£14</div>
+        <div class="price-unit">per session</div>
+        <div class="price-block-deal">
+          <div class="deal-label">Block of 6</div>
+          <div class="deal-value">£75</div>
+          <div class="deal-note">Save £9 · Never expires</div>
+        </div>
+      </div>
+      <div class="class-book-btn">
+        <a href="contact.html">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TIMETABLE -->
+<section class="timetable-section">
+  <p class="eyebrow">Weekly Schedule</p>
+  <h2 class="section-title">At a <em>glance</em></h2>
+
+  <div class="timetable">
+    <div class="timetable-row header">
+      <div>Day</div>
+      <div>Time</div>
+      <div>Class</div>
+      <div style="text-align:right">Spaces</div>
+    </div>
+    <div class="timetable-row fade-up">
+      <div class="timetable-day">Monday</div>
+      <div class="timetable-time">11:00am – 11:50am</div>
+      <div class="timetable-class">MS Strength & Fatigue</div>
+      <div class="timetable-spots">Spaces available</div>
+    </div>
+    <div class="timetable-row fade-up">
+      <div class="timetable-day">Tuesday</div>
+      <div class="timetable-time">10:30am – 11:30am</div>
+      <div class="timetable-class">Parkinson's Pilates</div>
+      <div class="timetable-spots few">2 spaces left</div>
+    </div>
+    <div class="timetable-row fade-up">
+      <div class="timetable-day">Wednesday</div>
+      <div class="timetable-time">2:00pm – 2:50pm</div>
+      <div class="timetable-class">Balance & Falls Prevention</div>
+      <div class="timetable-spots">Spaces available</div>
+    </div>
+    <div class="timetable-row fade-up">
+      <div class="timetable-day">Thursday</div>
+      <div class="timetable-time">10:00am – 10:55am</div>
+      <div class="timetable-class">Neuro Pilates</div>
+      <div class="timetable-spots few">3 spaces left</div>
+    </div>
+    <div class="timetable-row fade-up">
+      <div class="timetable-day">Friday</div>
+      <div class="timetable-time">9:30am – 10:25am</div>
+      <div class="timetable-class">Neuro Rehab Maintenance</div>
+      <div class="timetable-spots">Spaces available</div>
+    </div>
+  </div>
+  <p style="margin-top:16px; font-size:13px; color:rgba(26,31,46,.45);">Classes run term-time with short holiday breaks. All venues are accessible by foot and public transport in Norwich. Exact location provided on booking.</p>
+</section>
+
+<!-- ASSESSMENT CTA -->
+<div class="assessment-cta fade-up">
+  <div>
+    <h3>New to Norwich Neuro Physio &amp; Pilates?</h3>
+    <p>All new participants begin with a one-to-one initial assessment (£65, 45–60 mins) so Chloe can understand your condition, goals and mobility — and recommend the right class. Your first group session after assessment is free.</p>
+  </div>
+  <a href="contact.html" class="btn-primary">Book Your Assessment</a>
+</div>
+
+<footer id="main-footer"></footer>
+<script src="components.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norwich Neuro Physio &amp; Pilates | Norwich, Norfolk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---- HOME-SPECIFIC ---- */
+.hero {
+  min-height:100vh;
+  padding-top:80px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+
+.hero-text {
+  display:flex; flex-direction:column; justify-content:center;
+  padding:80px 64px 80px 80px;
+}
+
+.hero-logo {
+  width: 320px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 28px;
+}
+
+.hero-eyebrow {
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--warm); font-weight:500; margin-bottom:24px;
+  display:flex; align-items:center; gap:12px;
+}
+.hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--warm); }
+
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,5vw,68px); font-weight:300;
+  line-height:1.1; color:var(--ink); margin-bottom:28px;
+}
+.hero h1 em { font-style:italic; color:var(--teal); }
+
+.hero-sub {
+  font-size:17px; line-height:1.75;
+  color:rgba(26,31,46,.7); max-width:480px;
+  margin-bottom:44px; font-weight:300;
+}
+
+.hero-buttons { display:flex; gap:16px; flex-wrap:wrap; }
+
+.hero-credentials {
+  margin-top:56px; display:flex; gap:32px;
+}
+.cred-item { display:flex; flex-direction:column; }
+.cred-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px; font-weight:300; color:var(--teal); line-height:1;
+}
+.cred-label {
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  opacity:.55; margin-top:4px;
+}
+.cred-divider { width:1px; height:52px; background:var(--border); align-self:center; }
+
+/* Hero panel */
+.hero-visual {
+  background:var(--teal); position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-visual::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 30% 70%, rgba(255,255,255,.06) 0%, transparent 60%),
+             radial-gradient(ellipse at 80% 20%, rgba(200,168,107,.15) 0%, transparent 50%);
+}
+.hero-visual-inner { position:relative; z-index:2; text-align:center; padding:60px; }
+
+.hero-quote {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,2.5vw,34px); font-weight:300; font-style:italic;
+  color:rgba(255,255,255,.92); line-height:1.55; max-width:400px;
+  margin:0 auto 32px;
+}
+.hero-quote-attr {
+  font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--warm);
+}
+
+.orb {
+  position:absolute; border-radius:50%; opacity:.12;
+  animation:float 8s ease-in-out infinite;
+}
+.orb-1 { width:320px; height:320px; background:var(--warm); top:-70px; right:-70px; }
+.orb-2 { width:220px; height:220px; background:white; bottom:40px; left:40px; animation-delay:-3s; }
+.orb-3 { width:130px; height:130px; background:var(--sage); top:45%; left:48%; animation-delay:-5.5s; }
+@keyframes float {
+  0%,100% { transform:translateY(0) scale(1); }
+  50%      { transform:translateY(-20px) scale(1.05); }
+}
+
+/* ---- INTRO STRIP ---- */
+.intro-strip {
+  background:var(--ink); padding:56px 80px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:48px;
+}
+.strip-item { display:flex; align-items:flex-start; gap:20px; color:white; }
+.strip-icon {
+  width:44px; height:44px; background:rgba(255,255,255,.07);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; font-size:20px;
+}
+.strip-item h4 {
+  font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:400;
+  margin-bottom:6px; color:rgba(255,255,255,.95);
+}
+.strip-item p { font-size:13px; line-height:1.65; color:rgba(255,255,255,.5); }
+
+/* ---- CONDITIONS SECTION ---- */
+.conditions-section {
+  padding:100px 80px; background:var(--white);
+}
+.conditions-grid {
+  margin-top:52px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+.condition-card {
+  padding:36px 32px;
+  border:1.5px solid var(--border);
+  border-radius:4px;
+  transition:border-color .3s, box-shadow .3s, transform .3s;
+}
+.condition-card:hover {
+  border-color:var(--teal);
+  box-shadow:0 12px 40px rgba(45,106,106,.1);
+  transform:translateY(-3px);
+}
+.condition-icon { font-size:28px; margin-bottom:18px; }
+.condition-card h3 {
+  font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400;
+  color:var(--ink); margin-bottom:10px;
+}
+.condition-card p {
+  font-size:14px; line-height:1.75; color:rgba(26,31,46,.6); font-weight:300;
+}
+
+/* ---- CTA BAND ---- */
+.cta-band {
+  background:var(--teal); padding:72px 80px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:32px;
+}
+.cta-band-text h2 {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3vw,44px);
+  font-weight:300; color:white; line-height:1.2;
+}
+.cta-band-text h2 em { font-style:italic; color:var(--warm); }
+.cta-band-text p {
+  margin-top:10px; font-size:15px; color:rgba(255,255,255,.65); font-weight:300;
+}
+.cta-band-buttons { display:flex; gap:16px; flex-wrap:wrap; }
+
+/* ---- TESTIMONIAL STRIP ---- */
+.testimonial-section {
+  padding:100px 80px; background:var(--warm-light);
+}
+.testimonials-row {
+  margin-top:52px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+.testimonial {
+  background:white; border-radius:4px; padding:36px;
+  position:relative;
+}
+.testimonial::before {
+  content:'\201C'; font-family:'Cormorant Garamond',serif;
+  font-size:80px; color:var(--teal-light);
+  position:absolute; top:12px; left:24px; line-height:1;
+}
+.testimonial p {
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px; font-style:italic; font-weight:300;
+  line-height:1.65; color:var(--ink); padding-top:32px; position:relative; z-index:1;
+}
+.testimonial-attr {
+  margin-top:16px; font-size:12px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--warm);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width:1024px) {
+  .hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-text { padding:100px 40px 60px; }
+  .hero-visual { min-height:360px; }
+  .intro-strip { grid-template-columns:1fr; padding:48px 40px; gap:32px; }
+  .conditions-section, .testimonial-section { padding:72px 40px; }
+  .cta-band { padding:56px 40px; }
+  .conditions-grid, .testimonials-row { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:640px) {
+  .hero-text { padding:80px 24px 48px; }
+  .hero-credentials { gap:20px; }
+  .intro-strip { padding:40px 24px; }
+  .conditions-section, .testimonial-section { padding:60px 24px; }
+  .cta-band { padding:48px 24px; }
+  .conditions-grid, .testimonials-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <img src="logofull.png" alt="Norwich Neuro Physio & Pilates" class="hero-logo">
+    <p class="hero-sub">Physiotherapy-led Pilates and specialist exercise classes for people living with Parkinson's, MS, stroke and other neurological conditions. Evidence-based. Compassionate. Face-to-face in Norwich.</p>
+    <div class="hero-buttons">
+      <a href="classes.html" class="btn-primary">View Classes</a>
+      <a href="contact.html" class="btn-outline">Enquire Now</a>
+    </div>
+    <div class="hero-credentials">
+      <div class="cred-item">
+        <span class="cred-num">10+</span>
+        <span class="cred-label">Years Neuro Physio</span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-item">
+        <span class="cred-num">6</span>
+        <span class="cred-label">Max Class Size</span>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-item">
+        <span class="cred-num">HCPC</span>
+        <span class="cred-label">Registered</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-visual-inner">
+      <p class="hero-quote">"Exercise is the most powerful neuroprotective treatment we have for Parkinson's disease."</p>
+      <p class="hero-quote-attr">— Parkinson's UK Research</p>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="strip-item">
+    <div class="strip-icon">🧠</div>
+    <div>
+      <h4>Neurologically Informed</h4>
+      <p>Every class is designed using evidence-based neuroscience. Your physiotherapist understands exactly how your condition affects movement — and why specific exercises help.</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">🫶</div>
+    <div>
+      <h4>Small, Safe Groups</h4>
+      <p>No more than 6 participants per session. Individual attention, safe progressions, and a welcoming community of people who genuinely understand each other.</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-icon">📍</div>
+    <div>
+      <h4>Face-to-Face in Norwich</h4>
+      <p>Local, accessible classes in the heart of Norfolk. Real human connection alongside professional guidance — because community matters for long-term health.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONDITIONS -->
+<section class="conditions-section">
+  <p class="eyebrow">Who We Help</p>
+  <h2 class="section-title">Specialist support for <em>your condition</em></h2>
+  <p class="lead">We run dedicated classes for specific neurological conditions — not generic exercise adapted to fit. Each class is built around the neuroscience of that condition.</p>
+
+  <div class="conditions-grid">
+    <div class="condition-card fade-up">
+      <div class="condition-icon">🌀</div>
+      <h3>Parkinson's Disease</h3>
+      <p>High-amplitude movement classes drawing on PD Warrior and LSVT BIG principles. Targets posture, balance, movement speed and confidence. Strong evidence for slowing symptom progression.</p>
+    </div>
+    <div class="condition-card fade-up">
+      <div class="condition-icon">🧩</div>
+      <h3>Multiple Sclerosis</h3>
+      <p>Gentle, paced functional strengthening designed to build capacity without triggering fatigue. Pilates-based core work that improves balance and quality of life in MS.</p>
+    </div>
+    <div class="condition-card fade-up">
+      <div class="condition-icon">💫</div>
+      <h3>Stroke Rehabilitation</h3>
+      <p>Movement therapy that uses neuroplasticity — the brain's ability to rewire — to regain function and confidence. Continues the work of NHS physio long after discharge.</p>
+    </div>
+    <div class="condition-card fade-up">
+      <div class="condition-icon">⚖️</div>
+      <h3>Balance & Falls</h3>
+      <p>Targeted reactive balance and strength training. Builds the confidence to move safely and independently in everyday life. Open to any neurological or age-related balance difficulty.</p>
+    </div>
+    <div class="condition-card fade-up">
+      <div class="condition-icon">🧠</div>
+      <h3>Acquired Brain Injury</h3>
+      <p>Tailored rehabilitation programmes for people recovering from traumatic or acquired brain injury. Addresses coordination, strength, fatigue and functional movement.</p>
+    </div>
+    <div class="condition-card fade-up">
+      <div class="condition-icon">🔄</div>
+      <h3>Neuro Rehab Maintenance</h3>
+      <p>For anyone who has completed NHS physiotherapy and wants to maintain and build on progress. Professional guidance and a supportive group — as long as you need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band fade-up">
+  <div class="cta-band-text">
+    <h2>Not sure which class is <em>right for you?</em></h2>
+    <p>All new clients begin with a one-to-one assessment so Chloe can personally recommend the best class for your needs.</p>
+  </div>
+  <div class="cta-band-buttons">
+    <a href="classes.html" class="btn-outline-light">See All Classes</a>
+    <a href="contact.html" class="btn-primary" style="background:white; color:var(--teal);">Book Assessment</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-section">
+  <p class="eyebrow">Participant Stories</p>
+  <h2 class="section-title">What our participants <em>say</em></h2>
+
+  <div class="testimonials-row">
+    <div class="testimonial fade-up">
+      <p>The classes transformed my weeks. I was terrified of falling after my stroke, and now I walk to the shops without a second thought. Having a proper physio running the session makes all the difference.</p>
+      <div class="testimonial-attr">— Norwich resident, post-stroke · Neuro Pilates</div>
+    </div>
+    <div class="testimonial fade-up">
+      <p>I was diagnosed with Parkinson's two years ago and felt my movement getting slower every week. After three months in the Tuesday class my walking has genuinely improved and my confidence is back.</p>
+      <div class="testimonial-attr">— Norwich, Parkinson's Pilates participant</div>
+    </div>
+    <div class="testimonial fade-up">
+      <p>My MS fatigue made normal exercise classes impossible. These sessions understand my condition — they push me just enough without the horrible payback the next day. I've never found anything like it locally.</p>
+      <div class="testimonial-attr">— Norfolk, MS Strength & Fatigue class</div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer"></footer>
+<script src="components.js"></script>
+</body>
+</html>
