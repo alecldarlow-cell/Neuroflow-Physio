@@ -28,6 +28,7 @@ body {
   color:var(--ink);
   font-size:16px;
   line-height:1.7;
+  padding-top:88px; /* offset for fixed nav */
 }
 
 /* ---- NAV ---- */
@@ -109,7 +110,7 @@ nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,.15); }
 
 /* ---- PAGE HEADER (inner pages) ---- */
 .page-header {
-  padding: 140px 64px 80px;
+  padding: 80px 64px 80px;
   background: var(--ink);
   position: relative;
   overflow: hidden;
@@ -257,11 +258,12 @@ footer {
 /* ---- RESPONSIVE ---- */
 @media (max-width:1024px) {
   nav { padding:16px 32px; }
-  .page-header { padding:120px 40px 64px; }
+  .page-header { padding:64px 40px 64px; }
   footer { padding:48px 40px 32px; }
 }
 @media (max-width:640px) {
-  nav { padding:14px 20px; }
+  body { padding-top:72px; }
+  nav { padding:12px 20px; }
   .nav-toggle { display:flex; }
   .nav-links {
     position:absolute;
