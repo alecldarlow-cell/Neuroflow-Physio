@@ -25,12 +25,16 @@
 
 .about-photo {
   width:100%; aspect-ratio:3/4;
-  background:linear-gradient(145deg, var(--teal-light) 0%, var(--sage-light) 60%, #dce8dc 100%);
   border-radius:4px;
   display:flex; align-items:center; justify-content:center;
   overflow:hidden; position:relative;
 }
-.about-photo svg { width:55%; opacity:.28; color:var(--teal); }
+.about-photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 .credential-block {
   margin-top:24px;
@@ -187,12 +191,7 @@
 <div class="about-main">
   <div class="about-image-col fade-up">
     <div class="about-photo">
-      <svg viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="28" r="18" fill="currentColor"/>
-        <path d="M20 140 Q20 80 50 75 Q80 80 80 140" fill="currentColor"/>
-        <path d="M30 95 Q20 110 15 125" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M70 95 Q80 110 85 125" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
-      </svg>
+      <img src="Headshot_1.jpg" alt="Chloe Darlow, neurological physiotherapist">
     </div>
     <div class="credential-block">
       <div class="cred-pill">
