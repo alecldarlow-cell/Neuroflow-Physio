@@ -24,8 +24,31 @@ function renderNav() {
     <a href="index.html" class="nav-logo">
       <img src="logofull.png" alt="Norwich Neuro Physio & Pilates" class="nav-logo-img">
     </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links">${items}</ul>
   `;
+  
+  // Mobile menu toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 }
 
 function renderFooter() {

@@ -235,31 +235,36 @@
     <p class="form-sub">Fill in the form below and we'll get back to you within 48 hours.</p>
 
     <div id="form-wrapper">
-      <form class="form" id="enquiry-form">
+      <form class="form" id="enquiry-form" action="https://formspree.io/f/xzdkbdgn" method="POST">
+        <!-- Honeypot spam protection -->
+        <input type="text" name="_gotcha" style="display:none">
+        <!-- Custom subject line for emails -->
+        <input type="hidden" name="_subject" value="New Enquiry - Norwich Neuro Physio & Pilates">
+        
         <div class="form-row">
           <div class="form-group">
             <label>First Name *</label>
-            <input type="text" placeholder="Jane" required>
+            <input type="text" name="first_name" placeholder="Jane" required>
           </div>
           <div class="form-group">
             <label>Last Name *</label>
-            <input type="text" placeholder="Smith" required>
+            <input type="text" name="last_name" placeholder="Smith" required>
           </div>
         </div>
 
         <div class="form-group">
           <label>Email Address *</label>
-          <input type="email" placeholder="jane@example.com" required>
+          <input type="email" name="email" placeholder="jane@example.com" required>
         </div>
 
         <div class="form-group">
           <label>Phone Number</label>
-          <input type="tel" placeholder="07000 000 000">
+          <input type="tel" name="phone" placeholder="07000 000 000">
         </div>
 
         <div class="form-group">
           <label>Condition / Reason for Enquiry *</label>
-          <select required>
+          <select name="condition" required>
             <option value="">Please select...</option>
             <option>Parkinson's disease</option>
             <option>Multiple sclerosis</option>
@@ -273,7 +278,7 @@
 
         <div class="form-group">
           <label>Class of Interest</label>
-          <select>
+          <select name="class_interest">
             <option value="">Please select...</option>
             <option>Parkinson's Pilates — Tuesday 10:30am</option>
             <option>Neuro Pilates — Thursday 10:00am</option>
@@ -287,7 +292,7 @@
 
         <div class="form-group">
           <label>How long have you had your condition?</label>
-          <select>
+          <select name="condition_duration">
             <option value="">Please select...</option>
             <option>Recently diagnosed (under 1 year)</option>
             <option>1–3 years</option>
@@ -299,12 +304,12 @@
 
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Tell us a little about your situation and what you're hoping to achieve. Any additional context is helpful — but don't worry if you're not sure what to write."></textarea>
+          <textarea name="message" placeholder="Tell us a little about your situation and what you're hoping to achieve. Any additional context is helpful — but don't worry if you're not sure what to write."></textarea>
         </div>
 
         <div class="form-group">
           <label>How did you hear about us?</label>
-          <select>
+          <select name="referral_source">
             <option value="">Please select...</option>
             <option>GP / physiotherapist recommendation</option>
             <option>Parkinson's UK</option>
@@ -342,12 +347,40 @@
 <footer id="main-footer"></footer>
 <script src="components.js"></script>
 <script>
-document.getElementById('enquiry-form').addEventListener('submit', function(e) {
+document.getElementById('enquiry-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  document.getElementById('enquiry-form').style.display = 'none';
-  const success = document.getElementById('form-success');
-  success.classList.add('visible');
-  success.scrollIntoView({ behavior:'smooth', block:'center' });
+  
+  const form = e.target;
+  const submitBtn = form.querySelector('.form-submit');
+  const originalText = submitBtn.textContent;
+  
+  // Show loading state
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    if (response.ok) {
+      // Success - show confirmation
+      document.getElementById('enquiry-form').style.display = 'none';
+      const success = document.getElementById('form-success');
+      success.classList.add('visible');
+      success.scrollIntoView({ behavior:'smooth', block:'center' });
+    } else {
+      // Error from Formspree
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    // Show error message
+    alert('Sorry, there was a problem sending your message. Please try again or email us directly at Chloe.darlow@gmail.com');
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
 });
 </script>
 </body>
